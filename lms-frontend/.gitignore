@@ -24,3 +24,21 @@ dist-ssr
 *.sw?
 .env.example
 .env.local
+
+# Dependencies
+node_modules/
+lms-backend/node_modules/
+lms-frontend/node_modules/
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Build files
+dist/
+build/
+
+# Uploads
+lms-backend/uploads/
