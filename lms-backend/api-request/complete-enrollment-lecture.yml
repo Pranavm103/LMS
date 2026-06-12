@@ -1,0 +1,15 @@
+info:
+  name: complete-enrollment-lecture
+  type: http
+  seq: 17
+
+http:
+  method: PATCH
+  url: http://localhost:3000/api/enrollments/69ec610ac5252c127d39fbb4/lectures/69ec59b5c5252c127d39fbaf/complete
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,22 @@
+info:
+  name: upload thumbnail
+  type: http
+  seq: 20
+
+http:
+  method: POST
+  url: http://localhost:3000/api/courses/thumbnail
+  body:
+    type: multipart-form
+    data:
+      - name: thumbnail
+        type: file
+        value:
+          - /Users/gaurav/Downloads/ChatGPT Image May 9, 2026, 11_39_57 AM.png
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
