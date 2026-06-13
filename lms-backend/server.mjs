@@ -18,18 +18,23 @@ const allowedFrontendOrigins = [
 ].filter(Boolean);
 
 app.use(cors({
-    origin(origin, callback) {
-        if (!origin || allowedFrontendOrigins.some((allowedOrigin) => (
-            allowedOrigin instanceof RegExp
-                ? allowedOrigin.test(origin)
-                : allowedOrigin === origin
-        ))) {
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+
+        if (
+            allowedFrontendOrigins.some((allowedOrigin) =>
+                allowedOrigin instanceof RegExp
+                    ? allowedOrigin.test(origin)
+                    : allowedOrigin === origin
+            )
+        ) {
             return callback(null, true);
         }
 
-        callback(new Error("Not allowed by CORS"));
+        return callback(new Error("Not allowed by CORS"));
     },
-    credentials: true
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));
 app.use(express.json());
 app.use(cookieParser());
@@ -49,6 +54,7 @@ app.get("/", (req, res) => {
     message: "LMS Backend is running successfully 🚀",
   });
 });
+
 
 const server = app.listen(PORT, () => {
     console.log(chalk.greenBright(`Server is running on port ${PORT}`));
