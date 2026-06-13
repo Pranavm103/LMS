@@ -1,4 +1,4 @@
-const DEFAULT_BACKEND_URL = "http://localhost:5000";
+const DEFAULT_BACKEND_URL = "https://lms-t2pk.onrender.com/";
 
 const configuredBackendURL = import.meta.env.VITE_BACKEND_URL?.trim();
 
