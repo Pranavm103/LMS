@@ -39,11 +39,16 @@ app.use("/api/auth", authRouter);
 app.use("/api/courses", courseRouter);
 app.use("/api/lectures", lectureRouter);
 app.use("/api/enrollments", enrollmentRouter);
+ 
 
 app.get("/api/health", (req, res) => {
     res.json({ status: "ok" });
 });
-
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "LMS Backend is running successfully 🚀",
+  });
+});
 
 const server = app.listen(PORT, () => {
     console.log(chalk.greenBright(`Server is running on port ${PORT}`));
@@ -72,3 +77,4 @@ process.on("unhandledRejection", async (reason, promise) => {
     await disconnect();
     process.exit(1);
 })
+
